@@ -1,4 +1,10 @@
+import WaveBox from "./wavebox.js";
 
 
-const wavebox = document.getElementById('wavebox');
-new WaveBox(wavebox);
+document.addEventListener("DOMContentLoaded", function () {
+  const canvas = document.getElementById("canvas");
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  new WaveBox(canvas, 10, 1);
+
+});
