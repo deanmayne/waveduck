@@ -15,23 +15,26 @@ export default class WaveBox {
     this.points = [];
     for (let i = 0; i < this.num_points; i++) {
       this.points.push(new Point(this.dimensions));
+      this.points[i].draw(this.ctx)
     }
     this.ducks = [];
     for (let i = 0; i < this.num_ducks; i++) {
       this.ducks.push(new Duck(this.dimensions));
+      this.ducks[i].draw(this.ctx)
     }
 
     this.animate();
   }
 
-  animate(ctx) {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  animate() {
+    this.ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
     this.ducks.forEach((duck) => {
-      duck.animate(ctx);
+      duck.animate(this.ctx);
     });
 
     this.points.forEach((point) => {
-      point.animate(ctx);
+      point.animate(this.ctx);
     });
 
     requestAnimationFrame(this.animate.bind(this));
