@@ -36,7 +36,6 @@ export default class Duck {
   }
 
   outOfBounds() {
-      debugger
     return this.y > this.dimensions.height - 40 || this.x > this.dimensions.width
   }
 }

@@ -35,7 +35,6 @@ export default class Point {
   }
 
   outOfBounds() {
-    debugger;
     return (
       this.y > this.dimensions.height - 10 || this.x > this.dimensions.width
     );
