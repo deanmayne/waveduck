@@ -81,7 +81,7 @@ export default class WaveBox {
           let unitX = dx / d;
           let unitY = dy / d;
 
-          let force = -0.1;
+          let force = -0.2;
 
           let forceX = unitX * force;
           let forceY = unitY * force;
