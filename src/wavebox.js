@@ -50,7 +50,7 @@ export default class WaveBox {
 
   animate() {
     this.ctx.clearRect(0, 0, canvas.width, canvas.height);
-    if (this.ducks[0].theme !== theme){
+    if (this.ducks[0].theme !== theme || this.ducks.length != num_ducks || this.points.length != num_points){
         this.load();
     }
     let allObjects = [...this.ducks, ...this.points];
@@ -94,15 +94,15 @@ export default class WaveBox {
   }
 }
 
-canvas.addEventListener("mousemove", function (e) {
-  mouse.x = e.x;
-  mouse.y = e.y;
-});
+// canvas.addEventListener("mousemove", function (e) {
+//   mouse.x = e.x;
+//   mouse.y = e.y;
+// });
 
-canvas.addEventListener("mousedown", function (e) {
-  mouse.down = true;
-  mouse.x = e.x;
-  mouse.y = e.y;
+// canvas.addEventListener("mousedown", function (e) {
+//   mouse.down = true;
+//   mouse.x = e.x;
+//   mouse.y = e.y;
 
   //   for (i = 0; i < allObjects.length; i++) {
   //     let allObjects = allObjects[i];
@@ -115,11 +115,11 @@ canvas.addEventListener("mousedown", function (e) {
   //       break; // break (stop) the for loop
   //     }
   //   }
-});
+// });
 
-canvas.addEventListener("mouseup", function (e) {
-  mouse.down = false;
-});
+// canvas.addEventListener("mouseup", function (e) {
+//   mouse.down = false;
+// });
 
 
 let dropdown = document.getElementById("theme")
