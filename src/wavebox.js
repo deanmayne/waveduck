@@ -7,10 +7,9 @@ let mouse = {
   down: false,
 };
 
-let theme = document.getElementById("theme").value
-let num_ducks = document.getElementById("duckSlider").value
-let num_points = document.getElementById("liquidSlider").value
-
+let theme = document.getElementById("theme").value;
+let num_ducks = document.getElementById("duckSlider").value;
+let num_points = document.getElementById("liquidSlider").value;
 
 export default class WaveBox {
   constructor(canvas) {
@@ -22,20 +21,21 @@ export default class WaveBox {
   load() {
     this.points = [];
     for (let i = 0; i < num_points; i++) {
-                      let color = "";
-                      switch (theme) {
-                        case "french":
-                          color = ["blue", "white", "red"][
-                            Math.floor(Math.random() * 3)
-                          ];
-                          break;
-                        case "devil":
-                          color = "red";
-                          break;
-                        default:
-                          color = "blue";
-                          break;
-                      }
+      let color = "";
+      switch (theme) {
+        case "french":
+          color = ["blue", "white", "red"][Math.floor(Math.random() * 3)];
+          break;
+        case "devil":
+          color = "red";
+          break;
+        case "unicorn":
+          color = "pink";
+          break;
+        default:
+          color = "blue";
+          break;
+      }
       this.points.push(new Point(this.dimensions, theme, color));
       this.points[i].draw(this.ctx);
     }
@@ -50,8 +50,13 @@ export default class WaveBox {
 
   animate() {
     this.ctx.clearRect(0, 0, canvas.width, canvas.height);
-    if (this.ducks[0].theme !== theme || this.ducks.length != num_ducks || this.points.length != num_points){
-        this.load();
+    if (
+      this.ducks[0].theme !== theme ||
+      this.ducks.length != num_ducks ||
+      this.points.length != num_points
+    ) {
+      this.load();
+      return
     }
 
     let allObjects = [...this.ducks, ...this.points];
@@ -104,32 +109,27 @@ export default class WaveBox {
 //   mouse.x = e.x;
 //   mouse.y = e.y;
 
-  //   for (i = 0; i < allObjects.length; i++) {
-  //     let allObjects = allObjects[i];
-  //     let dx = mouse.x - allObjects.x;
-  //     let dy = mouse.y - allObjects.y;
-  //     let d = Math.sqrt(dx * dx + dy * dy);
+//   for (i = 0; i < allObjects.length; i++) {
+//     let allObjects = allObjects[i];
+//     let dx = mouse.x - allObjects.x;
+//     let dy = mouse.y - allObjects.y;
+//     let d = Math.sqrt(dx * dx + dy * dy);
 
-  //     if (d < radius) {
-  //       allObjectsUnderMouse = allObjects;
-  //       break; // break (stop) the for loop
-  //     }
-  //   }
+//     if (d < radius) {
+//       allObjectsUnderMouse = allObjects;
+//       break; // break (stop) the for loop
+//     }
+//   }
 // });
 
 // canvas.addEventListener("mouseup", function (e) {
 //   mouse.down = false;
 // });
 
-
-let dropdown = document.getElementById("theme")
-dropdown.addEventListener(
-  "change",
-    function(){
-    theme = dropdown.value
-    }
-
-);
+let dropdown = document.getElementById("theme");
+dropdown.addEventListener("change", function () {
+  theme = dropdown.value;
+});
 
 let duckSlider = document.getElementById("duckSlider");
 duckSlider.addEventListener("change", function () {

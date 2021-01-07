@@ -66,6 +66,9 @@ export default class Point {
       case "devil":
         color = this.color;
         break;
+      case "unicorn":
+        color = this.color;
+        break;
       default:
         color = "blue";
         break;
