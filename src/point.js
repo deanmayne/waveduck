@@ -72,6 +72,9 @@ export default class Point {
       case "unicorn":
         color = this.color;
         break;
+      case "witch":
+        color = this.color;
+        break;
       default:
         color = "blue";
         break;
@@ -79,7 +82,6 @@ export default class Point {
 
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
-    ctx.stroke();
     ctx.fillStyle = color;
     ctx.fill();
     
