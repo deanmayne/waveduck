@@ -69,7 +69,7 @@ export default class WaveBox {
         let dy = object2.y - object.y;
         let d = Math.sqrt(dx * dx + dy * dy);
 
-        if (d < object.radius) {
+        if (d < object.radius - 3) {
           if (d === 0) {
             d = 0.1;
           }
