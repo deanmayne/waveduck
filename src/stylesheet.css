@@ -1,3 +1,17 @@
 canvas{
     border: 1px solid black;
 }
+
+body{
+    display: flex
+}
+
+
+
+.dropdown, .slider{
+    display: flex;
+    height: fit-content;
+    align-self: center;
+    margin-bottom: 8px;
+}
+
