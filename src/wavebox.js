@@ -76,15 +76,15 @@ export default class WaveBox {
 
         if (d < object.radius - 3) {
           if (d === 0) {
-            d = 0.1;
+            d = 1;
           }
           let unitX = dx / d;
           let unitY = dy / d;
 
           let force = -0.1;
 
-          let forceX = unitX * force * 0.3;
-          let forceY = unitY * force * 0.3;
+          let forceX = unitX * force;
+          let forceY = unitY * force;
           object.velocity.x += forceX;
           object.velocity.y += forceY;
 
