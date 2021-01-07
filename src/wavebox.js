@@ -39,7 +39,7 @@ export default class WaveBox {
     }
     this.ducks = [];
     for (let i = 0; i < this.num_ducks; i++) {
-      this.ducks.push(new Duck(this.dimensions, this.theme));
+      this.ducks.push(new Duck(this.dimensions, theme));
       this.ducks[i].draw(this.ctx);
     }
 
