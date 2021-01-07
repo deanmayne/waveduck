@@ -9,8 +9,8 @@ export default class Duck {
     this.x = Math.random() * this.dimensions.width - 50;
     this.y = 0.25 * this.dimensions.height;
     this.velocity = { x: 0, y: 0 };
-    this.height = 40;
-    this.width = 50;
+    this.height = 60;
+    this.width = 75;
     this.radius = this.width;
     this.theme = theme;
   }
