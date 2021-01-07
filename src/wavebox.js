@@ -104,10 +104,10 @@ canvas.addEventListener("mousedown", function (e) {
   mouse.y = e.y;
 
   //   for (i = 0; i < allObjects.length; i++) {
-  //     var allObjects = allObjectss[i];
-  //     var dx = mouse.x - allObjects.x;
-  //     var dy = mouse.y - allObjects.y;
-  //     var d = Math.sqrt(dx * dx + dy * dy);
+  //     let allObjects = allObjects[i];
+  //     let dx = mouse.x - allObjects.x;
+  //     let dy = mouse.y - allObjects.y;
+  //     let d = Math.sqrt(dx * dx + dy * dy);
 
   //     if (d < radius) {
   //       allObjectsUnderMouse = allObjects;
