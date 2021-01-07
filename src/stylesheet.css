@@ -4,9 +4,14 @@ canvas{
 }
 
 body{
-    display: flex
+    display: flex;
+    margin-left: 150px;
+    margin-top: 80px;
 }
 
+.sidebar{
+    margin-left: 17px;
+}
 
 
 .dropdown, .slider{

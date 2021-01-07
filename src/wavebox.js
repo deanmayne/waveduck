@@ -29,6 +29,9 @@ export default class WaveBox {
         case "devil":
           color = "red";
           break;
+        case "angel":
+          color = "white";
+          break;
         case "unicorn":
           color = "pink";
           break;
@@ -74,17 +77,17 @@ export default class WaveBox {
         let dy = object2.y - object.y;
         let d = Math.sqrt(dx * dx + dy * dy);
 
-        if (d < object.radius - 3) {
+        if (d < object.radius || d < object.height) {
           if (d === 0) {
             d = 0.1;
           }
           let unitX = dx / d;
           let unitY = dy / d;
 
-          let force = -0.2;
+          let force = -0.1;
 
-          let forceX = unitX * force;
-          let forceY = unitY * force;
+          let forceX = unitX * force * 0.3;
+          let forceY = unitY * force * 0.3;
           object.velocity.x += forceX;
           object.velocity.y += forceY;
 

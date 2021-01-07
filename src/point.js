@@ -9,7 +9,7 @@ export default class Point {
     this.x = Math.random() * this.dimensions.width - 10;
     this.y = (Math.random() * 0.6 + 0.4) * this.dimensions.height;
     this.velocity = { x: 0, y: 0 };
-    this.radius = Math.max(Math.random() * 10, 5);
+    this.radius = Math.max(Math.random() * 20, 5);
     this.theme = theme;
     this.color = color;
   }
@@ -64,6 +64,9 @@ export default class Point {
         color = this.color;
         break;
       case "devil":
+        color = this.color;
+        break;
+      case "angel":
         color = this.color;
         break;
       case "unicorn":
