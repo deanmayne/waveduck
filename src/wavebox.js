@@ -76,7 +76,7 @@ export default class WaveBox {
 
         if (d < object.radius - 3) {
           if (d === 0) {
-            d = 1;
+            d = 0.1;
           }
           let unitX = dx / d;
           let unitY = dy / d;
