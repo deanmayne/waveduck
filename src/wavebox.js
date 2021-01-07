@@ -8,13 +8,13 @@ let mouse = {
 };
 
 let theme = document.getElementById("theme").value
+let num_ducks = document.getElementById("duckSlider").value
 
 export default class WaveBox {
-  constructor(canvas, num_points, num_ducks) {
+  constructor(canvas, num_points) {
     this.ctx = canvas.getContext("2d");
     this.dimensions = { width: canvas.width, height: canvas.height };
     this.num_points = num_points;
-    this.num_ducks = num_ducks;
     this.load();
   }
 
@@ -39,7 +39,7 @@ export default class WaveBox {
       this.points[i].draw(this.ctx);
     }
     this.ducks = [];
-    for (let i = 0; i < this.num_ducks; i++) {
+    for (let i = 0; i < num_ducks; i++) {
       this.ducks.push(new Duck(this.dimensions, theme));
       this.ducks[i].draw(this.ctx);
     }
@@ -129,3 +129,8 @@ dropdown.addEventListener(
     }
 
 );
+
+let duckSlider = document.getElementById("duckSlider");
+duckSlider.addEventListener("change", function () {
+  num_ducks = duckSlider.value;
+});
