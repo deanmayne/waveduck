@@ -67,6 +67,12 @@ export default class Duck {
       case "devil":
         duck.src = "./src/svg/DevilRubberDucky.svg";
         break;
+      case "angel":
+        duck.src = "./src/svg/AngelRubberDucky.svg";
+        break;
+      case "unicorn":
+        duck.src = "./src/svg/UnicornRubberDucky.svg";
+        break;
       default:
         duck.src = "./src/svg/RubberDucky.svg";
         break;
