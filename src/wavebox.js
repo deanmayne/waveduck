@@ -35,6 +35,9 @@ export default class WaveBox {
         case "unicorn":
           color = "pink";
           break;
+        case "witch":
+          color = "black";
+          break;
         default:
           color = "blue";
           break;
