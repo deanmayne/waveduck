@@ -8,7 +8,7 @@
 
 <body>
   <h1>WaveDuck</h1>
-  <canvas id="canvas" width = "500" height = "500"></canvas>
+  <canvas id="canvas" width = "400" height = "400"></canvas>
         <div className="dropdown">
             <label htmlFor="theme">Category: </label>
             <select id="theme">
@@ -19,7 +19,12 @@
             </select>
         </div>
         <div class="slider">
+                        <label htmlFor="duckSlider"># Ducks </label>
             <input type="range" min="1" max="5" value="1"  id="duckSlider">
+        </div>
+        <div class="slider">
+            <label htmlFor="liquidSlider">Amount of Water </label>
+            <input type="range" min="500" max="1000" value="500" id="liquidSlider">
         </div>
 </body>
 

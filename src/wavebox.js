@@ -9,18 +9,19 @@ let mouse = {
 
 let theme = document.getElementById("theme").value
 let num_ducks = document.getElementById("duckSlider").value
+let num_points = document.getElementById("liquidSlider").value
+
 
 export default class WaveBox {
-  constructor(canvas, num_points) {
+  constructor(canvas) {
     this.ctx = canvas.getContext("2d");
     this.dimensions = { width: canvas.width, height: canvas.height };
-    this.num_points = num_points;
     this.load();
   }
 
   load() {
     this.points = [];
-    for (let i = 0; i < this.num_points; i++) {
+    for (let i = 0; i < num_points; i++) {
                       let color = "";
                       switch (theme) {
                         case "french":
@@ -133,4 +134,9 @@ dropdown.addEventListener(
 let duckSlider = document.getElementById("duckSlider");
 duckSlider.addEventListener("change", function () {
   num_ducks = duckSlider.value;
+});
+
+let liquidSlider = document.getElementById("liquidSlider");
+liquidSlider.addEventListener("change", function () {
+  num_points = liquidSlider.value;
 });
