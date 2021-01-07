@@ -24,9 +24,21 @@ export default class Duck {
     this.velocity.y += CONSTANTS.gravity;
     this.velocity.x *= CONSTANTS.friction;
     this.velocity.y *= CONSTANTS.friction;
-    
-    this.x += this.velocity.x;
+
+    if (this.velocity.x >= 3) {
+      this.velocity.x = 3;
+    } else if (this.velocity.x <= -3) {
+      this.velocity.x = -3;
+    }
+
+    if (this.velocity.y >= 3) {
+      this.velocity.y = 3;
+    } else if (this.velocity.y <= -3) {
+      this.velocity.y = -3;
+    }
+
     this.y += this.velocity.y;
+    this.x += this.velocity.x;
 
     if (this.y > this.dimensions.height - this.height) {
       this.y = this.dimensions.height - this.height;

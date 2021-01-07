@@ -21,19 +21,20 @@ export default class WaveBox {
   load() {
     this.points = [];
     for (let i = 0; i < this.num_points; i++) {
-      let color = "";
-      switch (theme) {
-        case "french":
-          color = ["blue", "white", "red"][Math.floor(Math.random() * 3)];
-          break;
-        case "devil":
-          color = "red";
-          break;
-        default:
-          color = "blue";
-          break;
-      }
-
+                      let color = "";
+                      switch (theme) {
+                        case "french":
+                          color = ["blue", "white", "red"][
+                            Math.floor(Math.random() * 3)
+                          ];
+                          break;
+                        case "devil":
+                          color = "red";
+                          break;
+                        default:
+                          color = "blue";
+                          break;
+                      }
       this.points.push(new Point(this.dimensions, theme, color));
       this.points[i].draw(this.ctx);
     }
@@ -47,12 +48,15 @@ export default class WaveBox {
   }
 
   animate() {
-      console.log(theme)
     this.ctx.clearRect(0, 0, canvas.width, canvas.height);
+    if (this.ducks[0].theme !== theme){
+        this.load();
+    }
     let allObjects = [...this.ducks, ...this.points];
 
     for (let i = 0; i < allObjects.length; i++) {
       let object = allObjects[i];
+
       object.animate(this.ctx);
 
       for (let j = 0; j < allObjects.length; j++) {
@@ -114,7 +118,6 @@ canvas.addEventListener("mousedown", function (e) {
 
 canvas.addEventListener("mouseup", function (e) {
   mouse.down = false;
-  objectUnderMouse = null;
 });
 
 
