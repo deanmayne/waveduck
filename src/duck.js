@@ -75,9 +75,5 @@ export default class Duck {
     ctx.drawImage(duck, this.x, this.y, this.width, this.height);
   }
 
-  outOfBounds() {
-    return (
-      this.y > this.dimensions.height - 40 || this.x > this.dimensions.width
-    );
-  }
+
 }
