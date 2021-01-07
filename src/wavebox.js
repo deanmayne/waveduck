@@ -1,6 +1,14 @@
 import Duck from "./duck.js";
 import Point from "./point.js";
 
+let mouse = {
+  x: 0,
+  y: 0,
+  down: false,
+};
+
+let theme = document.getElementById("theme").value
+
 export default class WaveBox {
   constructor(canvas, num_points, num_ducks) {
     this.ctx = canvas.getContext("2d");
@@ -10,33 +18,111 @@ export default class WaveBox {
     this.load();
   }
 
-
   load() {
     this.points = [];
     for (let i = 0; i < this.num_points; i++) {
-      this.points.push(new Point(this.dimensions));
-      this.points[i].draw(this.ctx)
+      let color = "";
+      switch (theme) {
+        case "french":
+          color = ["blue", "white", "red"][Math.floor(Math.random() * 3)];
+          break;
+        case "devil":
+          color = "red";
+          break;
+        default:
+          color = "blue";
+          break;
+      }
+
+      this.points.push(new Point(this.dimensions, theme, color));
+      this.points[i].draw(this.ctx);
     }
     this.ducks = [];
     for (let i = 0; i < this.num_ducks; i++) {
-      this.ducks.push(new Duck(this.dimensions));
-      this.ducks[i].draw(this.ctx)
+      this.ducks.push(new Duck(this.dimensions, this.theme));
+      this.ducks[i].draw(this.ctx);
     }
 
     this.animate();
   }
 
   animate() {
+      console.log(theme)
     this.ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
-    this.ducks.forEach((duck) => {
-      duck.animate(this.ctx);
-    });
+    let allObjects = [...this.ducks, ...this.points];
 
-    this.points.forEach((point) => {
-      point.animate(this.ctx);
-    });
+    for (let i = 0; i < allObjects.length; i++) {
+      let object = allObjects[i];
+      object.animate(this.ctx);
+
+      for (let j = 0; j < allObjects.length; j++) {
+        if (i === j) {
+          continue;
+        }
+        let object2 = allObjects[j];
+        let dx = object2.x - object.x;
+        let dy = object2.y - object.y;
+        let d = Math.sqrt(dx * dx + dy * dy);
+
+        if (d < object.radius) {
+          if (d === 0) {
+            d = 0.1;
+          }
+          let unitX = dx / d;
+          let unitY = dy / d;
+
+          let force = -0.1;
+
+          let forceX = unitX * force * 0.3;
+          let forceY = unitY * force * 0.3;
+          object.velocity.x += forceX;
+          object.velocity.y += forceY;
+
+          object2.velocity.x -= forceX;
+          object2.velocity.y -= forceY;
+        }
+        j++;
+      }
+    }
 
     requestAnimationFrame(this.animate.bind(this));
   }
 }
+
+canvas.addEventListener("mousemove", function (e) {
+  mouse.x = e.x;
+  mouse.y = e.y;
+});
+
+canvas.addEventListener("mousedown", function (e) {
+  mouse.down = true;
+  mouse.x = e.x;
+  mouse.y = e.y;
+
+  //   for (i = 0; i < allObjects.length; i++) {
+  //     var allObjects = allObjectss[i];
+  //     var dx = mouse.x - allObjects.x;
+  //     var dy = mouse.y - allObjects.y;
+  //     var d = Math.sqrt(dx * dx + dy * dy);
+
+  //     if (d < radius) {
+  //       allObjectsUnderMouse = allObjects;
+  //       break; // break (stop) the for loop
+  //     }
+  //   }
+});
+
+canvas.addEventListener("mouseup", function (e) {
+  mouse.down = false;
+  objectUnderMouse = null;
+});
+
+
+let dropdown = document.getElementById("theme")
+dropdown.addEventListener(
+  "change",
+    function(){
+    theme = dropdown.value
+    }
+
+);

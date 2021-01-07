@@ -1,18 +1,18 @@
 const CONSTANTS = {
-  accuracy: 5,
-  gravity: 0.2,
+  gravity: 0.1,
   friction: 0.99,
-  bounce: 0.5,
-  height: 40,
-  width: 50,
 };
 
 export default class Duck {
-  constructor(dimensions) {
+  constructor(dimensions, theme) {
     this.dimensions = dimensions;
-    this.x = Math.min(Math.random() * this.dimensions.width,this.dimensions.width-50);
+    this.x = Math.random() * this.dimensions.width - 50;
     this.y = 0.25 * this.dimensions.height;
-    this.v = 0;
+    this.velocity = { x: 0, y: 0 };
+    this.height = 40;
+    this.width = 50;
+    this.radius = this.width;
+    this.theme = theme;
   }
 
   animate(ctx) {
@@ -21,21 +21,51 @@ export default class Duck {
   }
 
   move() {
-    if (this.y >= this.dimensions.height - CONSTANTS.height) {
-      this.y = this.dimensions.height - CONSTANTS.height;
-    } else {
-        this.y += this.v;
-        this.v += CONSTANTS.gravity;
+    this.velocity.y += CONSTANTS.gravity;
+    this.velocity.x *= CONSTANTS.friction;
+    this.velocity.y *= CONSTANTS.friction;
+    
+    this.x += this.velocity.x;
+    this.y += this.velocity.y;
+
+    if (this.y > this.dimensions.height - this.height) {
+      this.y = this.dimensions.height - this.height;
+      this.velocity.y = -Math.abs(this.velocity.y);
+    }
+    if (this.y < this.height) {
+      this.y = this.height;
+      this.velocity.y = Math.abs(this.velocity.y);
+    }
+    if (this.x > this.dimensions.width - this.width) {
+      this.x = this.dimensions.width - this.width;
+      this.velocity.x = -Math.abs(this.velocity.x);
+    }
+    if (this.x < this.width) {
+      this.x = this.width;
+      this.velocity.x = Math.abs(this.velocity.x);
     }
   }
 
   draw(ctx) {
     const duck = new Image();
-    duck.src = "FrenchRubberDucky.svg";
-    ctx.drawImage(duck, this.x, this.y, CONSTANTS.width, CONSTANTS.height);
+    switch (this.theme) {
+      case "french":
+        duck.src = "./src/svg/FrenchRubberDucky.svg";
+        break;
+      case "devil":
+        duck.src = "./src/svg/DevilRubberDucky.svg";
+        break;
+      default:
+        duck.src = "./src/svg/RubberDucky.svg";
+        break;
+    }
+
+    ctx.drawImage(duck, this.x, this.y, this.width, this.height);
   }
 
   outOfBounds() {
-    return this.y > this.dimensions.height - 40 || this.x > this.dimensions.width
+    return (
+      this.y > this.dimensions.height - 40 || this.x > this.dimensions.width
+    );
   }
 }

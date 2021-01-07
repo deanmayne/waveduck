@@ -1,18 +1,20 @@
 const CONSTANTS = {
-  accuracy: 5,
-  gravity: 0.2,
-  friction: 0.99,
-  bounce: 0.5,
+  gravity: 0.4,
+  friction: .99,
   height: 10,
   width: 10,
 };
 
+
 export default class Point {
-  constructor(dimensions) {
+  constructor(dimensions, theme, color) {
     this.dimensions = dimensions;
     this.x = Math.random() * this.dimensions.width-10;
     this.y = (Math.random()*0.6+0.4) * this.dimensions.height;
-    this.v = 0;
+    this.velocity = { x: 0, y: 0 };
+    this.radius = Math.max(Math.random() * 10,5);
+    this.color = color;
+    this.theme = theme;
   }
 
   animate(ctx) {
@@ -21,17 +23,53 @@ export default class Point {
   }
 
   move() {
-    if (this.y >= this.dimensions.height - CONSTANTS.height) {
-      this.y = this.dimensions.height - CONSTANTS.height;
-    } else {
-      this.y += this.v;
-      this.v += CONSTANTS.gravity;
+    this.velocity.y += CONSTANTS.gravity;
+    this.velocity.x *= CONSTANTS.friction;
+    this.velocity.y *= CONSTANTS.friction;
+    
+    this.x += this.velocity.x;
+    this.y += this.velocity.y;
+    
+    if(this.y > this.dimensions.height - this.radius){
+      this.y = this.dimensions.height - this.radius;
+      this.velocity.y = - Math.abs(this.velocity.y);
+    } 
+    if(this.y < this.radius){
+      this.y = this.radius;
+      this.velocity.y = Math.abs(this.velocity.y);
+    } 
+    if(this.x > this.dimensions.width - this.radius){
+      this.x = this.dimensions.width - this.radius;
+      this.velocity.x = -Math.abs(this.velocity.x);
     }
+    if(this.x < this.radius){
+      this.x = this.radius;
+      this.velocity.x = Math.abs(this.velocity.x);
+    }
+    
+
   }
 
   draw(ctx) {
-    ctx.fillStyle = "blue"
-    ctx.fillRect(this.x, this.y, CONSTANTS.width, CONSTANTS.height);
+      let color = "";
+        switch (this.theme) {
+          case "french":
+            color = this.color;
+            break;
+            case "devil":
+            color = this.color;
+            break;
+          default:
+            color = "blue";
+            break;
+        }
+
+
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI)
+    ctx.stroke();
+    ctx.fillStyle = color;
+    ctx.fill();
   }
 
   outOfBounds() {
