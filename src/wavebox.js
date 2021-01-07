@@ -53,8 +53,8 @@ export default class WaveBox {
     if (this.ducks[0].theme !== theme || this.ducks.length != num_ducks || this.points.length != num_points){
         this.load();
     }
-    let allObjects = [...this.ducks, ...this.points];
 
+    let allObjects = [...this.ducks, ...this.points];
     for (let i = 0; i < allObjects.length; i++) {
       let object = allObjects[i];
 

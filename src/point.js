@@ -78,9 +78,5 @@ export default class Point {
     ctx.fill();
   }
 
-  outOfBounds() {
-    return (
-      this.y > this.dimensions.height - 10 || this.x > this.dimensions.width
-    );
-  }
+
 }
