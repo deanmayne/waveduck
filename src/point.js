@@ -79,6 +79,7 @@ export default class Point {
     ctx.stroke();
     ctx.fillStyle = color;
     ctx.fill();
+    
   }
 
 
