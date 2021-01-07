@@ -58,31 +58,10 @@ export default class Point {
   }
 
   draw(ctx) {
-    let color = "";
-    switch (this.theme) {
-      case "french":
-        color = this.color;
-        break;
-      case "devil":
-        color = this.color;
-        break;
-      case "angel":
-        color = this.color;
-        break;
-      case "unicorn":
-        color = this.color;
-        break;
-      case "witch":
-        color = this.color;
-        break;
-      default:
-        color = "blue";
-        break;
-    }
 
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
-    ctx.fillStyle = color;
+    ctx.fillStyle = this.color;
     ctx.fill();
     
   }
