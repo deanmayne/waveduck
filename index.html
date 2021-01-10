@@ -7,10 +7,14 @@
 </head>
 
 <body>
+
   <canvas id="canvas" width = "800" height = "400"></canvas>
         <div class="sidebar">
-        <div class="dropdown">
-            <label htmlFor="theme">Theme: </label>
+        <h1>WaveDuck</h1>
+        <p>Click and drag inside the box to influence the motion of the ducks and the water.</p>
+        <div class ="form">
+        <div class="form_input">
+            <label htmlFor="theme">Theme</label>
             <select id="theme">
                 <option selected value="regular">Normal</option>
                 <option value="french">French</option>
@@ -21,24 +25,16 @@
             </select>
         </div>
 
-        <div class="slider">
-            <label htmlFor="duckSlider"># Ducks </label>
-            <input type="range" min="1" max="5" value="1"  id="duckSlider">
+        <div class="form_input">
+            <label htmlFor="duckSlider">Number of Ducks</label>
+            <input class='banana' type="range" min="1" max="5" value="1"  id="duckSlider">
         </div>
-        <div class="slider">
-            <label htmlFor="liquidSlider">Amount of Water </label>
+        <div class="form_input">
+            <label htmlFor="liquidSlider">Amount of Water</label>
             <input type="range" min="500" max="1000" value="500" id="liquidSlider">
         </div>
         </div>
-        <svg>
-            <defs>
-                <filter id = "goo">
-                    <feGaussianBlur in="SourceGraphic" stdDeviation = "10" result ="blur"/>
-                    <feColorMatrix in="blur" mode = "matrix" values = "1 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 1 9 -9" result = "goo">
-                        <feComposite in ="SourceGraphic" in2="goo" operator="atop"/>
-                </filter>
-            </defs>
-        </svg>
+        </div>
 </body>
 
 </html>
