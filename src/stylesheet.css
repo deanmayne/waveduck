@@ -1,21 +1,44 @@
-canvas{
-    border: 1px solid black;
-
+canvas {
+  border: 1px solid black;
 }
 
-body{
-    display: flex;
+body {
+  display: flex;
 }
 
-.sidebar{
-    margin-left: 17px;
+.sidebar {
+  margin-left: 17px;
+  max-width: 200px;
 }
 
-
-.dropdown, .slider{
-    display: flex;
-    height: fit-content;
-    align-self: center;
-    margin-bottom: 8px;
+.form_input select {
+  border-color: lightgrey;
+  border-radius: 3px;
+  color: darkgrey;
 }
 
+.form_input select:focus{
+    outline:none;
+}
+
+.form_input label {
+  font-family: sans-serif;
+  font-weight: 500;
+  font-size: 0.9em;
+  color: darkgrey;
+  margin-bottom: 4px;
+}
+
+.form_input {
+  display: grid;
+  height: fit-content;
+  align-self: center;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.form_input input,
+.form_input select {
+  width: 200px;
+}
