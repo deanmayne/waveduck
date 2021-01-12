@@ -1,1 +1,100 @@
-(()=>{"use strict";const t=.99;let i={x:0,y:0,down:!1},s=document.getElementById("theme").value,e=document.getElementById("duckSlider").value,h=document.getElementById("liquidSlider").value,c=document.getElementById("theme");c.addEventListener("change",(function(){s=c.value}));let n=document.getElementById("duckSlider");n.addEventListener("change",(function(){e=n.value}));let o=document.getElementById("liquidSlider");o.addEventListener("change",(function(){h=o.value})),canvas.addEventListener("mousemove",(function(t){i.x=t.x,i.y=t.y})),canvas.addEventListener("mousedown",(function(t){i.down=!0})),document.addEventListener("mouseup",(function(t){i.down=!1}));class a{constructor(t){this.ctx=t.getContext("2d"),this.dimensions={width:t.width,height:t.height},this.load()}load(){this.points=[];for(let t=0;t<h;t++){let i="";switch(s){case"french":i=["blue","white","red"][Math.floor(3*Math.random())];break;case"devil":i="red";break;case"angel":i="white";break;case"unicorn":i="pink";break;case"witch":i="black";break;default:i="blue"}this.points.push(new l(this.dimensions,s,i)),this.points[t].draw(this.ctx)}this.ducks=[];for(let t=0;t<e;t++)this.ducks.push(new d(this.dimensions,s)),this.ducks[t].draw(this.ctx);this.animate()}animate(){if(this.ctx.clearRect(0,0,canvas.width,canvas.height),this.ducks[0].theme!==s||this.ducks.length!=e||this.points.length!=h)return void this.load();let t=[...this.ducks,...this.points];for(let s=0;s<t.length;s++){let e=t[s];if(i.down){let t=i.x-e.x,s=i.y-e.y,h=Math.sqrt(t*t+s*s);h<2*e.radius&&(0===h&&(h=.1),e.velocity.x+=.3*t,e.velocity.y+=.3*s)}e.animate(this.ctx);for(let i=0;i<t.length;i++){if(s===i)continue;let h=t[i],c=h.x-e.x,n=h.y-e.y,o=Math.sqrt(c*c+n*n);if(o<e.radius||o<e.height){0===o&&(o=.1);let t=-.1,i=c/o*t*.3,s=n/o*t*.3;e.velocity.x+=i,e.velocity.y+=s,h.velocity.x-=i,h.velocity.y-=s}i++}}requestAnimationFrame(this.animate.bind(this))}}class d{constructor(t,i){this.dimensions=t,this.x=Math.random()*this.dimensions.width-50,this.y=.25*this.dimensions.height,this.velocity={x:0,y:0},this.height=60,this.width=75,this.radius=this.width,this.theme=i}animate(t){this.move(),this.draw(t)}move(){this.velocity.y+=.1,this.velocity.x*=t,this.velocity.y*=t,this.velocity.x>=3?this.velocity.x=3:this.velocity.x<=-3&&(this.velocity.x=-3),this.velocity.y>=3?this.velocity.y=3:this.velocity.y<=-3&&(this.velocity.y=-3),this.y+=this.velocity.y,this.x+=this.velocity.x,this.y>this.dimensions.height-this.height&&(this.y=this.dimensions.height-this.height,this.velocity.y=-Math.abs(this.velocity.y)),this.y<this.height&&(this.y=this.height,this.velocity.y=Math.abs(this.velocity.y)),this.x>this.dimensions.width-this.width&&(this.x=this.dimensions.width-this.width,this.velocity.x=-Math.abs(this.velocity.x)),this.x<0&&(this.x=0,this.velocity.x=Math.abs(this.velocity.x))}draw(t){const i=new Image;switch(this.theme){case"french":i.src="./src/svg/FrenchRubberDucky.svg";break;case"devil":i.src="./src/svg/DevilRubberDucky.svg";break;case"angel":i.src="./src/svg/AngelRubberDucky.svg";break;case"unicorn":i.src="./src/svg/UnicornRubberDucky.svg";break;case"witch":i.src="./src/svg/WitchRubberDucky.svg";break;default:i.src="./src/svg/RubberDucky.svg"}t.drawImage(i,this.x,this.y,this.width,this.height)}}class l{constructor(t,i,s){this.dimensions=t,this.x=Math.random()*this.dimensions.width-10,this.y=(.6*Math.random()+.4)*this.dimensions.height,this.velocity={x:0,y:0},this.radius=Math.max(20*Math.random(),5),this.theme=i,this.color=s}animate(t){this.move(),this.draw(t)}move(){this.velocity.y+=.1,this.velocity.x*=t,this.velocity.y*=t,this.velocity.x>=3?this.velocity.x=3:this.velocity.x<=-3&&(this.velocity.x=-3),this.velocity.y>=3?this.velocity.y=3:this.velocity.y<=-3&&(this.velocity.y=-3),this.x+=this.velocity.x,this.y+=this.velocity.y,this.y>this.dimensions.height-this.radius&&(this.y=this.dimensions.height-this.radius,this.velocity.y=-Math.abs(this.velocity.y)),this.y<this.radius&&(this.y=this.radius,this.velocity.y=Math.abs(this.velocity.y)),this.x>this.dimensions.width-this.radius&&(this.x=this.dimensions.width-this.radius,this.velocity.x=-Math.abs(this.velocity.x)),this.x<this.radius&&(this.x=this.radius,this.velocity.x=Math.abs(this.velocity.x))}draw(t){t.beginPath(),t.arc(this.x,this.y,this.radius,0,2*Math.PI),t.fillStyle=this.color,t.fill()}}document.addEventListener("DOMContentLoaded",(function(){const t=document.getElementById("canvas");new a(t)}))})();
+/*
+ * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
+ * This devtool is not neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
+/******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./src/index.js":
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+/*! namespace exports */
+/*! exports [not provided] [no usage info] */
+/*! runtime requirements: __webpack_require__, __webpack_require__.r, __webpack_exports__, __webpack_require__.* */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _wavebox_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./wavebox.js */ \"./src/wavebox.js\");\n\n\ndocument.addEventListener(\"DOMContentLoaded\", function () {\n  const canvas = document.getElementById(\"canvas\");\n  new _wavebox_js__WEBPACK_IMPORTED_MODULE_0__.default(canvas);\n});\n\n\n\n//# sourceURL=webpack:///./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/wavebox.js":
+/*!************************!*\
+  !*** ./src/wavebox.js ***!
+  \************************/
+/*! namespace exports */
+/*! export default [provided] [no usage info] [missing usage info prevents renaming] */
+/*! other exports [not provided] [no usage info] */
+/*! runtime requirements: __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => /* binding */ WaveBox\n/* harmony export */ });\nconst CONSTANTS = {\n  gravity: 0.1,\n  friction: 0.99,\n};\n\nlet mouse = {\n  x: 0,\n  y: 0,\n  down: false,\n};\n\nlet theme = document.getElementById(\"theme\").value;\nlet num_ducks = document.getElementById(\"duckSlider\").value;\nlet num_points = document.getElementById(\"liquidSlider\").value;\n\n\nlet dropdown = document.getElementById(\"theme\");\ndropdown.addEventListener(\"change\", function () {\n  theme = dropdown.value;\n});\n\nlet duckSlider = document.getElementById(\"duckSlider\");\nduckSlider.addEventListener(\"change\", function () {\n  num_ducks = duckSlider.value;\n});\n\nlet liquidSlider = document.getElementById(\"liquidSlider\");\nliquidSlider.addEventListener(\"change\", function () {\n  num_points = liquidSlider.value;\n});\n\ncanvas.addEventListener(\"mousemove\", function (e) {\n  mouse.x = e.x;\n  mouse.y = e.y;\n});\n\ncanvas.addEventListener(\"mousedown\", function (e) {\n  mouse.down = true;\n\n});\n\ndocument.addEventListener(\"mouseup\", function (e) {\n  mouse.down = false;\n});\n\nclass WaveBox {\n  constructor(canvas) {\n    this.ctx = canvas.getContext(\"2d\");\n    this.dimensions = { width: canvas.width, height: canvas.height };\n    this.load();\n  }\n\n  load() {\n    this.points = [];\n    for (let i = 0; i < num_points; i++) {\n      let color = \"\";\n      switch (theme) {\n        case \"french\":\n          color = [\"blue\", \"white\", \"red\"][Math.floor(Math.random() * 3)];\n          break;\n        case \"devil\":\n          color = \"red\";\n          break;\n        case \"angel\":\n          color = \"white\";\n          break;\n        case \"unicorn\":\n          color = \"pink\";\n          break;\n        case \"witch\":\n          color = \"black\";\n          break;\n        default:\n          color = \"blue\";\n          break;\n      }\n      this.points.push(new Point(this.dimensions, theme, color));\n      this.points[i].draw(this.ctx);\n    }\n    this.ducks = [];\n    for (let i = 0; i < num_ducks; i++) {\n      this.ducks.push(new Duck(this.dimensions, theme));\n      this.ducks[i].draw(this.ctx);\n    }\n\n    this.animate();\n  }\n\n  animate() {\n    this.ctx.clearRect(0, 0, canvas.width, canvas.height);\n    if (\n      this.ducks[0].theme !== theme ||\n      this.ducks.length != num_ducks ||\n      this.points.length != num_points\n    ) {\n      this.load();\n      return;\n    }\n\n    let allObjects = [...this.ducks, ...this.points];\n    for (let i = 0; i < allObjects.length; i++) {\n      let object = allObjects[i];\n\n      if (mouse.down) {\n        let dx = mouse.x - object.x;\n        let dy = mouse.y - object.y;\n        let d = Math.sqrt(dx * dx + dy * dy);\n\n        if (d < object.radius * 2) {\n          if (d === 0) {\n            d = 0.1;\n          }\n\n          object.velocity.x += dx * 0.3;\n          object.velocity.y += dy * 0.3;\n        }\n      }\n\n      object.animate(this.ctx);\n\n      for (let j = 0; j < allObjects.length; j++) {\n        if (i === j) {\n          continue;\n        }\n\n        let object2 = allObjects[j];\n        let dx = object2.x - object.x;\n        let dy = object2.y - object.y;\n        let d = Math.sqrt(dx * dx + dy * dy);\n\n        if (d < object.radius || d < object.height) {\n          if (d === 0) {\n            d = 0.1;\n          }\n          let unitX = dx / d;\n          let unitY = dy / d;\n\n          let force = -0.1;\n\n          let forceX = unitX * force * 0.3;\n          let forceY = unitY * force * 0.3;\n          object.velocity.x += forceX;\n          object.velocity.y += forceY;\n\n          object2.velocity.x -= forceX;\n          object2.velocity.y -= forceY;\n        }\n        j++;\n      }\n    }\n\n    requestAnimationFrame(this.animate.bind(this));\n  }\n}\n\nclass Duck {\n  constructor(dimensions, theme) {\n    this.dimensions = dimensions;\n    this.x = Math.random() * this.dimensions.width - 50;\n    this.y = 0.25 * this.dimensions.height;\n    this.velocity = { x: 0, y: 0 };\n    this.height = 60;\n    this.width = 75;\n    this.radius = this.width;\n    this.theme = theme;\n  }\n\n  animate(ctx) {\n    this.move();\n    this.draw(ctx);\n  }\n\n  move() {\n    this.velocity.y += CONSTANTS.gravity;\n    this.velocity.x *= CONSTANTS.friction;\n    this.velocity.y *= CONSTANTS.friction;\n\n    if (this.velocity.x >= 3) {\n      this.velocity.x = 3;\n    } else if (this.velocity.x <= -3) {\n      this.velocity.x = -3;\n    }\n\n    if (this.velocity.y >= 3) {\n      this.velocity.y = 3;\n    } else if (this.velocity.y <= -3) {\n      this.velocity.y = -3;\n    }\n\n    this.y += this.velocity.y;\n    this.x += this.velocity.x;\n\n    if (this.y > this.dimensions.height - this.height) {\n      this.y = this.dimensions.height - this.height;\n      this.velocity.y = -Math.abs(this.velocity.y);\n    }\n    if (this.y < this.height) {\n      this.y = this.height;\n      this.velocity.y = Math.abs(this.velocity.y);\n    }\n    if (this.x > this.dimensions.width - this.width) {\n      this.x = this.dimensions.width - this.width;\n      this.velocity.x = -Math.abs(this.velocity.x);\n    }\n    if (this.x < 0) {\n      this.x = 0 ;\n      this.velocity.x = Math.abs(this.velocity.x);\n    }\n  }\n\n  draw(ctx) {\n    const duck = new Image();\n    switch (this.theme) {\n      case \"french\":\n        duck.src = \"./src/svg/FrenchRubberDucky.svg\";\n        break;\n      case \"devil\":\n        duck.src = \"./src/svg/DevilRubberDucky.svg\";\n        break;\n      case \"angel\":\n        duck.src = \"./src/svg/AngelRubberDucky.svg\";\n        break;\n      case \"unicorn\":\n        duck.src = \"./src/svg/UnicornRubberDucky.svg\";\n        break;\n      case \"witch\":\n        duck.src = \"./src/svg/WitchRubberDucky.svg\";\n        break;\n      default:\n        duck.src = \"./src/svg/RubberDucky.svg\";\n        break;\n    }\n\n    ctx.drawImage(duck, this.x, this.y, this.width, this.height);\n  }\n}\n\nclass Point {\n  constructor(dimensions, theme, color) {\n    this.dimensions = dimensions;\n    this.x = Math.random() * this.dimensions.width - 10;\n    this.y = (Math.random() * 0.6 + 0.4) * this.dimensions.height;\n    this.velocity = { x: 0, y: 0 };\n    this.radius = Math.max(Math.random() * 20, 5);\n    this.theme = theme;\n    this.color = color;\n  }\n\n  animate(ctx) {\n    this.move();\n    this.draw(ctx);\n  }\n\n  move() {\n    this.velocity.y += CONSTANTS.gravity;\n    this.velocity.x *= CONSTANTS.friction;\n    this.velocity.y *= CONSTANTS.friction;\n\n    if (this.velocity.x >= 3) {\n      this.velocity.x = 3;\n    } else if (this.velocity.x <= -3) {\n      this.velocity.x = -3;\n    }\n\n    if (this.velocity.y >= 3) {\n      this.velocity.y = 3;\n    } else if (this.velocity.y <= -3) {\n      this.velocity.y = -3;\n    }\n\n    this.x += this.velocity.x;\n    this.y += this.velocity.y;\n\n    if (this.y > this.dimensions.height - this.radius) {\n      this.y = this.dimensions.height - this.radius;\n      this.velocity.y = -Math.abs(this.velocity.y);\n    }\n    if (this.y < this.radius) {\n      this.y = this.radius;\n      this.velocity.y = Math.abs(this.velocity.y);\n    }\n    if (this.x > this.dimensions.width - this.radius) {\n      this.x = this.dimensions.width - this.radius;\n      this.velocity.x = -Math.abs(this.velocity.x);\n    }\n    if (this.x < this.radius) {\n      this.x = this.radius;\n      this.velocity.x = Math.abs(this.velocity.x);\n    }\n  }\n\n  draw(ctx) {\n    ctx.beginPath();\n    ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);\n    ctx.fillStyle = this.color;\n    ctx.fill();\n  }\n}\n\n\n//# sourceURL=webpack:///./src/wavebox.js?");
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		if(__webpack_module_cache__[moduleId]) {
+/******/ 			return __webpack_module_cache__[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => Object.prototype.hasOwnProperty.call(obj, prop)
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+/******/ 	// startup
+/******/ 	// Load entry module
+/******/ 	__webpack_require__("./src/index.js");
+/******/ 	// This entry module used 'exports' so it can't be inlined
+/******/ })()
+;

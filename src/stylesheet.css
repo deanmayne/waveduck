@@ -42,3 +42,17 @@ body {
 .form_input select {
   width: 200px;
 }
+
+
+footer{
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    padding: 8px 0;
+
+}
+
+footer > a{
+        margin: 5px;
+        color: grey;
+    }

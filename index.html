@@ -1,40 +1,71 @@
 <!DOCTYPE html>
+  <head>
+    <title>Wave Duck</title>
+        <link rel="stylesheet" type="text/css" href="/src/stylesheet.css" />
+    <script
+      type="text/javascript"
+      src="dist/main.js"
+      charset="utf-8"
+      defer
+    ></script>
 
-<head>
-  <title>Wave Duck</title>
-  <script type="text/javascript" src="dist/main.js" charset="utf-8" defer></script>
-    <link rel="stylesheet" type="text/css" href="/src/stylesheet.css">
-</head>
+    <script src="https://kit.fontawesome.com/a1cb06c5d0.js" crossorigin="anonymous"></script>
+  </head>
 
-<body>
-
-  <canvas id="canvas" width = "800" height = "400"></canvas>
-        <div class="sidebar">
-        <h1>WaveDuck</h1>
-        <p>Click and drag inside the box to influence the motion of the ducks and the water.</p>
-        <div class ="form">
+  <body>
+    <canvas id="canvas" width="800" height="400"></canvas>
+    <div class="sidebar">
+      <h1>WaveDuck</h1>
+      <p>
+        Click and drag inside the box to influence the motion of the ducks and
+        the water.
+      </p>
+      <div class="form">
         <div class="form_input">
-            <label htmlFor="theme">Theme</label>
-            <select id="theme">
-                <option selected value="regular">Normal</option>
-                <option value="french">French</option>
-                <option value="devil">Devil</option>
-                <option value="angel">Angel</option>
-                <option value="unicorn">Unicorn</option>
-                <option value="witch">Witch</option>
-            </select>
+          <label htmlFor="theme">Theme</label>
+          <select id="theme">
+            <option selected value="regular">Normal</option>
+            <option value="french">French</option>
+            <option value="devil">Devil</option>
+            <option value="angel">Angel</option>
+            <option value="unicorn">Unicorn</option>
+            <option value="witch">Witch</option>
+          </select>
         </div>
 
         <div class="form_input">
-            <label htmlFor="duckSlider">Number of Ducks</label>
-            <input class='banana' type="range" min="1" max="5" value="1"  id="duckSlider">
+          <label htmlFor="duckSlider">Number of Ducks</label>
+          <input
+            class="banana"
+            type="range"
+            min="1"
+            max="5"
+            value="1"
+            id="duckSlider"
+          />
         </div>
         <div class="form_input">
-            <label htmlFor="liquidSlider">Amount of Water</label>
-            <input type="range" min="500" max="1000" value="500" id="liquidSlider">
+          <label htmlFor="liquidSlider">Amount of Water</label>
+          <input
+            type="range"
+            min="500"
+            max="1000"
+            value="500"
+            id="liquidSlider"
+          />
         </div>
-        </div>
-        </div>
-</body>
-
+      </div>
+      <footer>
+        <a href="https://github.com/deanmayne/waveduck">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/deanmayne/">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://www.angel.co/u/deanmayne">
+          <i class="fab fa-angellist"></i>
+        </a>
+      </footer>
+    </div>
+  </body>
 </html>
