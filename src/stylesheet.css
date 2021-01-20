@@ -4,11 +4,17 @@ canvas {
 
 body {
   display: flex;
+  justify-content: center;
+  margin-top: 10%;
 }
 
 .sidebar {
   margin-left: 17px;
   max-width: 200px;
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 20px;
+
 }
 
 .form_input select {
@@ -17,8 +23,8 @@ body {
   color: darkgrey;
 }
 
-.form_input select:focus{
-    outline:none;
+.form_input select:focus {
+  outline: none;
 }
 
 .form_input label {
@@ -43,16 +49,18 @@ body {
   width: 200px;
 }
 
-
-footer{
-    display: flex;
-    justify-content: center;
-    font-size: 30px;
-    padding: 8px 0;
-
+footer {
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+  padding: 8px 0;
 }
 
-footer > a{
-        margin: 5px;
-        color: grey;
-    }
+footer > a {
+  margin: 5px;
+  color: grey;
+}
+
+.fab:hover{
+    color: royalblue;
+}
